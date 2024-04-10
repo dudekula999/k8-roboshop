@@ -136,17 +136,17 @@ spec:
         tier: web
     spec:
       containers:
-        - name: web
-          image: dudekula786/web:v1
-          imagePullPolicy: Always
-          volumeMounts:
-            - name: nginx-conf
-              mountPath: /etc/nginx/nginx.conf
-              subPath: nginx.conf
-              readOnly: true
-      volumes:
+      - name: web
+        image: dudekula786/web:v1
+        imagePullPolicy: Always
+        volumeMounts:
         - name: nginx-conf
-          configMap:
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+          readOnly: true
+      volumes:
+      - name: nginx-conf
+        configMap:
           name: web
           items:
             - key: nginx.conf
