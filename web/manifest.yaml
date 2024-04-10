@@ -1,5 +1,4 @@
 
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -28,8 +27,8 @@ spec:
         image: dudekula786/web:v1
         imagePullPolicy: Always
         # envFrom:
-        # - configMapRef:
-        #     name: web
+# - configMapRef:
+#     name: web
 ---
 apiVersion: v1
 kind: Service
@@ -37,11 +36,11 @@ metadata:
   name: web
   namespace: roboshop
 spec:
-  type: loadBalancer
+  type: LoadBalancer
   selector:
     app: web
     project: roboshop
-    tier: app
+    tier: web
   ports:
   - protocol: TCP
     port: 80 #service-port
