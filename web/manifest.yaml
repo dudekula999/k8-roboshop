@@ -1,3 +1,4 @@
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -109,6 +110,7 @@ data:
 
     } 
 
+ 
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -134,17 +136,17 @@ spec:
         tier: web
     spec:
       containers:
-      - name: web
-        image: dudekula786/web:v1
-        imagePullPolicy: Always
-        volumeMounts:
-        - name: nginx-conf
-          mountPath: /etc/nginx/nginx.conf
-          subPath: nginx.conf
-          readOnly: true
+        - name: web
+          image: dudekula786/web:v1
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+              readOnly: true
       volumes:
-      - name: nginx-conf
-        configMap:
+        - name: nginx-conf
+          configMap:
           name: web
           items:
             - key: nginx.conf
