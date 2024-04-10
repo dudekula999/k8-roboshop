@@ -40,7 +40,7 @@ spec:
   selector:
     app: web
     project: roboshop
-    tier: web
+    tier: app
   ports:
   - protocol: TCP
     port: 80 #service-port
